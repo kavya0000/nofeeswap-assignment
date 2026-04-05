@@ -112,6 +112,4 @@ A video walkthrough demonstrating:
 
 ---
 
-## 📦 Setup Instructions
 
-Follow the steps below to reproduce the project locally.
