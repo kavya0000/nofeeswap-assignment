@@ -91,6 +91,16 @@ Bot (Node.js) → Mempool Monitoring → Transaction Decoding → Sandwich Execu
 
 ---
 
+## 🧠 Deep Technical Concepts Demonstrated
+
+- **Mempool Monitoring:** Listening to pending transactions before block inclusion
+- **Gas Price Manipulation:** Prioritizing transactions using higher/lower gas
+- **Nonce Ordering:** Ensuring correct execution sequence for sandwich attack
+- **Transaction Lifecycle:** Pending → Confirmed → Reverted handling in UI
+- **Off-chain Automation:** Bot reacting to on-chain activity in real-time
+
+----
+
 ## 🎥 Demo
 
 A video walkthrough demonstrating:
