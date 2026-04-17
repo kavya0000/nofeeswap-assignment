@@ -1,115 +1,254 @@
-# nofeeswap-assignment
-Full-stack Web3 DEX simulation using NoFeeSwap protocol with local deployment, Next.js dApp, and mempool sandwich attack bot.
+# 🚀 NoFeeSwap Screening Assignment
 
-# 🚀 NoFeeSwap Full-Stack Web3 Assignment
+## 📌 Overview
 
-This project is a complete local deployment and interaction system for the NoFeeSwap protocol, built as part of a Senior Full-Stack Web3 Engineer technical assignment.
+This project demonstrates a complete local implementation of the NoFeeSwap protocol, including:
 
-The implementation demonstrates end-to-end understanding of DeFi systems, including smart contract deployment, Web3 frontend integration, and mempool-based automated trading strategies.
+* Local blockchain deployment using Hardhat
+* Smart contract interaction
+* Web3 frontend (dApp)
+* Mempool monitoring bot simulating sandwich attacks
 
----
-
-## 🧠 Project Overview
-
-The goal of this project is to:
-
-- Deploy the NoFeeSwap protocol in a local blockchain environment
-- Build a decentralized application (dApp) to interact with the protocol
-- Develop a mempool monitoring bot that simulates sandwich attacks
-
-This project showcases both **on-chain interaction** and **off-chain infrastructure**, focusing on real-world DeFi mechanics such as gas prioritization, nonce ordering, and transaction lifecycle management.
+The system runs entirely in a local environment and showcases full-stack Web3 engineering capabilities.
 
 ---
 
 ## ⚙️ Tech Stack
 
-- Frontend: Next.js + React
-- Web3 Integration: ethers.js
-- Blockchain: Foundry (Anvil)
-- Backend Bot: Node.js + TypeScript
-- Wallet: MetaMask
+* Frontend: React (Next.js)
+* Blockchain: Hardhat Local Node
+* Smart Contracts: Solidity (NoFeeSwap Core & Operator)
+* Web3 Integration: Ethers.js
+* Bot: Node.js (TypeScript)
+* Wallet: MetaMask
 
 ---
 
-## 🔥 Key Features
+## ✅ Features Implemented
 
-### 🧱 Local Protocol Deployment
-- Deployed NoFeeSwap core & operator contracts locally
-- Configured local blockchain using Anvil
-- Created and minted mock ERC-20 tokens
-
-### 🌐 Web3 Frontend (dApp)
-- Wallet connection via MetaMask
-- Swap interface with transaction lifecycle handling
-- Basic user interaction with deployed contracts
-
-### 🤖 Mempool Monitoring Bot
-- Listens to pending transactions in the mempool
-- Detects swap transactions from frontend
-- Simulates sandwich attack:
-  - Front-run transaction (higher gas)
-  - Victim transaction
-  - Back-run transaction (lower gas)
+* Local blockchain setup using Hardhat
+* Deployment of protocol contracts
+* Wallet connection via MetaMask
+* Token approval system
+* Swap interface (UI ready)
+* Transaction lifecycle handling (pending, confirmed)
+* Mempool monitoring bot (off-chain)
+* Sandwich attack simulation logic (basic)
 
 ---
 
-## ⚡ Architecture Overview
+## ⚠️ Partially Implemented
 
-Frontend (Next.js) → ethers.js → Local Blockchain (Anvil)
-
-Bot (Node.js) → Mempool Monitoring → Transaction Decoding → Sandwich Execution
+* Liquidity pool UI (structure present, limited interaction)
+* Profitability calculation (basic logic only)
+* Full swap execution integration (UI + contract flow simplified)
 
 ---
 
-## ⚠️ Transparency Statement
+## ❌ Not Implemented
+
+* Advanced liquidity kernel visualization
+* Production-level MEV optimization
+* Real-world gas competition simulation
+
+---
+
+## 📂 Project Structure
+
+/contracts        → Deployment scripts
+/frontend         → Web3 dApp
+/bot              → Mempool monitoring bot
+README.md         → Documentation
+
+---
+
+## 🛠️ Setup Instructions
+
+### 📌 Prerequisites
+
+* Node.js (v16+)
+* npm
+* MetaMask
+* Git
+
+---
+
+### 📥 Installation
+
+git clone https://github.com/kavya0000/nofeeswap-assignment.git
+cd nofeeswap-assignment
+npm install
+
+---
+
+### ⛓️ Start Local Blockchain
+
+npx hardhat node
+
+---
+
+### 📜 Deploy Contracts
+
+npx hardhat run scripts/deploy.js --network localhost
+
+---
+
+### 🌐 Start Frontend
+
+cd frontend
+npm install
+npm run dev
+
+App runs at:
+http://localhost:3000
+
+---
+
+### 🤖 Run Mempool Bot
+
+cd bot
+npm install
+npm run start
+
+---
+
+## 🧠 Architecture Overview
+
+### 1. Frontend (dApp)
+
+* Built using React
+* Connects to MetaMask
+* Displays account, balances, and transaction status
+* Provides UI for approvals and swaps
+
+### 2. Local Blockchain
+
+* Hardhat node simulates Ethereum network
+* Provides test accounts with ETH
+* Executes all transactions locally
+
+### 3. Bot (Off-chain)
+
+* Runs independently from UI
+* Monitors pending transactions (mempool)
+* Executes sandwich logic
+
+Mempool contains pending transactions before confirmation ([Chainstack][1])
+
+---
+
+## 🤖 Mempool Bot Design
+
+The bot listens to pending transactions using:
+
+web3 / ethers provider → pending transaction subscription
+
+Similar systems monitor mempool streams to detect opportunities ([GitHub][2])
+
+### Workflow:
+
+1. Listen for pending transactions
+2. Identify swap transactions
+3. Decode calldata using ABI
+4. Extract:
+
+   * Trade size
+   * Slippage tolerance
+5. Evaluate opportunity (basic logic)
+6. Execute sandwich strategy:
+
+   * Front-run → higher gas
+   * Victim transaction
+   * Back-run → lower gas
+
+---
+
+## 📸 Screenshots
+
+### 🔗 Frontend UI (Running on localhost)
+
+* NoFeeSwap Local Screening Build interface
+* MetaMask connection button
+* Token balance display
+* Transaction feedback panel
+
+### ⚙️ Local Blockchain (Hardhat Node)
+
+* JSON-RPC server running
+* Test accounts with ETH
+* Private keys generated
+* Local chain active
+
+### 💻 Development Environment
+
+* Frontend running on localhost:3000
+* Hardhat node running in parallel
+* Full integration setup working
+
+---
+
+## 🎥 Demo Video
+
+https://drive.google.com/file/d/1EGn7Y4WiA0c7JcE8xBXVavViasRWYd3W/view
+
+The video demonstrates:
+
+* Local node startup
+* Frontend execution
+* Contract interaction setup
+* Full system workflow
+
+---
+
+## 📢 Transparency Statement
+
+This submission focuses on core system design and integration:
 
 ### ✅ Completed
-- Local blockchain setup with Anvil
-- Basic dApp with wallet integration
-- Swap simulation
-- Mempool monitoring bot
-- Sandwich attack simulation using gas price ordering
 
-### ⚠️ Partially Completed
-- Calldata decoding (basic implementation)
-- Profitability logic (simplified assumptions)
-- UI enhancements for liquidity and pool initialization
+* Local blockchain deployment
+* Frontend UI structure
+* Wallet integration
+* Mempool monitoring bot structure
 
-### ❌ Not Implemented
-- Full graphical kernel visualization
-- Advanced MEV optimization strategies
-- Production-grade contract interaction
+### ⚠️ Partial
 
----
+* Swap execution flow
+* Liquidity interaction UI
+* Profit calculation logic
 
-## 🚧 Known Limitations
+### ❌ Omitted
 
-- Swap logic is simplified for demonstration purposes
-- Bot uses heuristic-based detection instead of full decoding
-- No real liquidity pool math from YellowPaper fully implemented
-- Designed for local testing only (not mainnet-ready)
+* Advanced visualization
+* Production-grade MEV strategies
 
 ---
 
-## 🧠 Deep Technical Concepts Demonstrated
+## ⚠️ Known Limitations
 
-- **Mempool Monitoring:** Listening to pending transactions before block inclusion
-- **Gas Price Manipulation:** Prioritizing transactions using higher/lower gas
-- **Nonce Ordering:** Ensuring correct execution sequence for sandwich attack
-- **Transaction Lifecycle:** Pending → Confirmed → Reverted handling in UI
-- **Off-chain Automation:** Bot reacting to on-chain activity in real-time
-
-----
-
-## 🎥 Demo
-
-A video walkthrough demonstrating:
-- Contract deployment
-- dApp usage (wallet connection & swap)
-- Bot detecting and executing sandwich attack
-
-https://drive.google.com/file/d/1EGn7Y4WiA0c7JcE8xBXVavViasRWYd3W/view?usp=sharing
+* Simplified MEV logic
+* Limited UI interactivity
+* No real network latency/gas competition
+* Local-only environment
 
 ---
 
+## 🙌 Final Notes
 
+This project demonstrates:
+
+* Understanding of EVM transaction lifecycle
+* Mempool monitoring concepts
+* Web3 frontend integration
+* Off-chain automation design
+
+Happy to walk through:
+
+* Architecture decisions
+* Trade-offs
+* Improvements
+
+Thank you for the opportunity.
+
+[1]: https://chainstack.com/a-developers-guide-to-the-transactions-in-mempool-code-edition/?utm_source=chatgpt.com "Blockchain Transactions in Ethereum Mempool - Coding Edition"
+[2]: https://github.com/derekzuk/mev-bot?utm_source=chatgpt.com "GitHub - derekzuk/mev-bot: MEV bot to automate sending and tracking NFT mint transactions from an array of wallets"
